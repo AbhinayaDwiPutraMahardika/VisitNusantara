@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pariwisata dan Budaya</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/yourkitcode.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,75 +23,145 @@
       rel="stylesheet"
     />
     <style>
-      .active {
-        color: yellow !important;
+      html {
+        scroll-behavior: smooth;
       }
+
+      .nav-link.active {
+        border: 2px solid white;
+        border-radius: 9999px;
+        padding: 0.25rem 0.5rem;
+      }
+
       .nav-scrolled {
         background-color: rgba(181, 89, 42, 0.9);
         transition: background-color 0.3s ease-in-out;
       }
-      .text-black {
-        color: black !important;
-      }
     </style>
   </head>
   <body class="bg-gray-100 font-sans m-0">
-    <!-- Header -->
     <header
       id="navbar"
-      class="bg-[#B5592A] text-white px-6 py-1 flex items-center fixed top-0 left-0 w-full z-50 transition duration-300"
+      class="bg-[#B5592A] text-white px-6 py-2 flex items-center justify-between fixed top-0 left-0 w-full z-50 transition duration-300"
       style="font-family: 'Jolly Lodger', cursive"
     >
       <h1 class="text-2xl font-bold" style="width: 180px">Visit Nusantara</h1>
-      <nav class="ml-auto">
-        <ul
-          class="flex gap-2 text-white font-semibold items-center text-xs"
-          style="font-family: 'Inter', sans-serif"
+      <button
+        id="nav-toggle"
+        class="block focus:outline-none"
+        aria-label="Toggle Menu"
+      >
+        <svg
+          class="w-6 h-6 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <li>
-            <a
-              href="#home"
-              class="nav-link px-1 py-1 border-2 border-transparent hover:border-white rounded-lg transition duration-300"
-              data-section="home"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#about"
-              class="nav-link px-1 py-1 border-2 border-transparent hover:border-white rounded-lg transition duration-300"
-              data-section="about"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="#travel"
-              class="nav-link px-1 py-1 border-2 border-transparent hover:border-white rounded-lg transition duration-300"
-              data-section="travel"
-              >Travel</a
-            >
-          </li>
-          <li>
-            <a
-              href="#contact"
-              class="nav-link px-1 py-1 border-2 border-transparent hover:border-white rounded-lg transition duration-300"
-              data-section="contact"
-              >Contact</a
-            >
-          </li>
-        </ul>
-      </nav>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
     </header>
 
-    <!-- Hero Section -->
+    <nav
+      id="nav-menu"
+      class="fixed top-0 right-0 bg-[#B5592A] text-white rounded-l-2xl z-50 hidden"
+      style="font-family: 'Inter', sans-serif"
+    >
+      <div class="p-4">
+        <div class="flex justify-end">
+          <button
+            id="close-nav"
+            aria-label="Tutup Menu"
+            class="text-2xl font-bold"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="mt-4 mb-6">
+          <div class="flex gap-2">
+            <div class="relative w-1/2">
+              <input
+                type="text"
+                placeholder="Search"
+                class="w-full px-3 py-1 text-sm text-gray-700 rounded shadow pr-8 focus:outline-none"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 absolute right-2 top-1/2 transform -translate-y-1/2 text-[#B5592A]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103 10.5a7.5 7.5 0 0013.15 6.15z"
+                />
+              </svg>
+            </div>
+            <select
+              class="w-1/2 text-sm bg-white text-gray-700 px-2 py-1 rounded shadow"
+            >
+              <option>Provinsi</option>
+              <option>Jawa Timur</option>
+              <option>Bali</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="text-sm font-semibold space-y-3">
+          <li><a href="#home" class="block nav-link">Home</a></li>
+          <li><a href="#about" class="block nav-link">About</a></li>
+          <li>
+            <span class="block">Travel</span>
+            <ul class="ml-4 mt-1 space-y-1 text-sm">
+              <li>
+                <a href="#kuliner" class="flex items-center nav-link"
+                  ><span class="mr-1">▸</span> Kuliner Nusantara</a
+                >
+              </li>
+              <li>
+                <a href="#tarian" class="flex items-center nav-link"
+                  ><span class="mr-1">▸</span> Tarian Daerah</a
+                >
+              </li>
+              <li>
+                <a href="#alatmusik" class="flex items-center nav-link"
+                  ><span class="mr-1">▸</span> Alat Musik</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#contact" class="block nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <section
       id="home"
       class="relative text-white text-left p-10 flex items-center"
-      style="background-image: url('Assets/gunung.jpeg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 50vh; width: 100%;"
+      style="
+        background-image: url('Assets/gunung.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50vh;
+        width: 100%;
+      "
     >
       <div class="max-w-lg mt-8">
-        <h1 class="text-2xl font-bold" style="font-family: 'Inknut Antiqua', serif">
+        <h1
+          class="text-2xl font-bold"
+          style="font-family: 'Inknut Antiqua', serif"
+        >
           PARIWISATA DAN BUDAYA<br /><span class="text-lg">BANGSA</span>
         </h1>
         <p class="text-sm mt-2">
@@ -96,53 +177,106 @@
       </div>
     </section>
 
-    <!-- Informasi -->
     <section id="about" class="p-6 bg-white text-gray-700">
-      <h2 class="text-2xl font-bold" style="font-family: 'Inknut Antiqua', serif; color: black;">INDONESIA</h2>
-      <p class="mt-2 text-sm" style="font-family: 'Instrument Sans', sans-serif; font-weight: 700; color: black;">
+      <h2
+        class="text-2xl font-bold"
+        style="font-family: 'Inknut Antiqua', serif; color: black"
+      >
+        INDONESIA
+      </h2>
+      <p
+        class="mt-2 text-sm font-bold"
+        style="font-family: 'Instrument Sans', sans-serif; color: black"
+      >
         Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+        industry.
       </p>
     </section>
 
-    <!-- Galeri -->
-    <section id="travel" class="p-6 text-center" style="background-image: url('Assets/21eef8f6c1496bb4b1026d7fd5f58f1c.png');">
-      <h2 class="text-xl font-bold">Destinasi Wisata</h2>
-      <div class="flex justify-center gap-4 mt-4">
-        <div class="bg-white p-4 rounded-lg shadow-md">
-          <img src="Assets/reog.png" alt="Wisata" class="rounded-lg" />
-          <p class="mt-2 text-sm">Penjelasan mengenai budaya, kuliner khasnya, serta beberapa pariwisata.</p>
+    <section
+      id="travel"
+      class="px-6 pt-16 pb-32 bg-cover bg-no-repeat bg-bottom text-white relative"
+      style="
+        background-image: url('Assets/21eef8f6c1496bb4b1026d7fd5f58f1c.png');
+      "
+    >
+      <div class="flex justify-between gap-6 mb-12 max-w-5xl mx-auto">
+        <div
+          class="bg-white bg-opacity-90 p-4 rounded-xl shadow-md w-1/2 text-black flex flex-col justify-between"
+        >
+          <img
+            src="Assets/reog.png"
+            alt="Reog"
+            class="rounded-lg w-full h-32 object-cover"
+          />
+          <p class="mt-2 text-sm font-medium">
+            Penjelasan mengenai budaya, dan cerita rakyatnya.
+          </p>
+          <p class="text-blue-500 text-xs mt-1 font-semibold text-right">
+            Read more
+          </p>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-          <img src="Assets/nganu.jpeg" alt="Wisata" class="rounded-lg" />
-          <p class="mt-2 text-sm">Penjelasan mengenai budaya, kuliner khasnya, serta beberapa pariwisata.</p>
+        <div
+          class="bg-white bg-opacity-90 p-4 rounded-xl shadow-md w-1/2 text-black flex flex-col justify-between"
+        >
+          <img
+            src="Assets/nganu.jpeg"
+            alt="Rumah Besar"
+            class="rounded-lg w-full h-32 object-cover"
+          />
+          <p class="mt-2 text-sm font-medium">
+            Penjelasan mengenai lokasi, serta dekripsi wilayah provinsinya.
+          </p>
+          <p class="text-blue-500 text-xs mt-1 font-semibold text-right">
+            Read more
+          </p>
+        </div>
+      </div>
+      <div class="flex justify-center text-black px-4 max-w-5xl mx-auto">
+        <div class="max-w-xl text-left">
+          <h2
+            class="text-base font-bold mb-2"
+            style="font-family: 'Inknut Antiqua', serif; color: black"
+          >
+            ANALISA PENGUNJUNG
+          </h2>
+          <p
+            class="text-sm font-medium text-black"
+            style="font-family: 'Instrument Sans', sans-serif"
+          >
+            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet..."
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Testimoni -->
+    <div class="flex justify-center bg-white -mt-20 pb-16">
+      <div class="text-center">
+        <img
+          src="Assets/bunder.png"
+          alt="Top Pariwisata"
+          class="w-40 md:w-48 lg:w-56 mx-auto"
+        />
+        <h3 class="text-sm md:text-base font-bold mt-2 text-gray-700">
+          WISATA TERKENAL
+        </h3>
+        <div class="flex justify-center text-orange-400 text-sm">★★★★☆</div>
+        <button
+          class="mt-2 px-4 py-1 border border-orange-500 text-orange-500 rounded-full text-sm font-semibold hover:bg-orange-100"
+        >
+          Mulai
+        </button>
+      </div>
+    </div>
+
     <section class="p-6 bg-white text-center">
-      <h2 class="text-xl font-bold">Testimoni</h2>
+      <h2 class="text-xl font-bold mb-4">Testimoni</h2>
       <div class="mt-4 text-gray-700">
-        <p>
-          "Perjalanan yang luar biasa! Indonesia memiliki keindahan alam yang
-          luar biasa."
-        </p>
-        <p class="mt-2 font-bold">- Wisatawan</p>
-      </div>
     </section>
 
-    <!-- Kontak -->
     <section id="contact" class="p-6 bg-blue-100 text-center">
       <h2 class="text-xl font-bold">Contact</h2>
-      <form class="mt-4">
+      <form class="mt-4 max-w-md mx-auto">
         <input
           type="text"
           placeholder="Name"
@@ -157,17 +291,74 @@
           placeholder="Message"
           class="p-2 rounded-lg border w-full mb-2"
         ></textarea>
-        <button class="bg-orange-500 text-white px-4 py-2 rounded-lg">
+        <button
+          class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
+        >
           Submit
         </button>
       </form>
     </section>
+
+    <footer class="bg-[#B5592A] text-white px-4 py-8 overflow-x-auto">
+      <div class="flex flex-row gap-6 min-w-[800px] text-sm">
+        <div class="w-48 flex-shrink-0">
+          <h3 class="text-base font-bold text-yellow-300 mb-2">
+            Visit Nusantara
+          </h3>
+          <p>
+            Platform pariwisata budaya berbasis web yang menghadirkan peta
+            interaktif dan informasi destinasi budaya dari seluruh Indonesia.
+          </p>
+        </div>
+
+        <div class="w-48 flex-shrink-0 flex flex-col justify-between">
+          <div>
+            <h3 class="text-base font-bold text-yellow-300 mb-2">Jelajahi</h3>
+            <ul class="list-disc list-inside space-y-1">
+              <li>Peta Budaya</li>
+              <li>Destinasi Pilihan</li>
+              <li>Cerita Tradisi</li>
+              <li>Kuliner Khas</li>
+            </ul>
+          </div>
+          <div class="mt-6">
+            <h3 class="text-base font-bold text-lime-300 mb-2">Hubungi Kami</h3>
+            <p>
+              Email:
+              <a
+                href="mailto:kontak@rasanusantara.id"
+                class="underline"
+                >kontak@rasanusantara.id</a
+              >
+            </p>
+            <p>Lokasi: Jakarta</p>
+          </div>
+        </div>
+
+        <div class="w-48 flex-shrink-0">
+          <h3 class="text-base font-bold text-yellow-300 mb-2">Informasi</h3>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Kebijakan Privasi</li>
+            <li>Syarat & Ketentuan</li>
+            <li>© 2025 Rasa Nusantara</li>
+          </ul>
+          <div class="flex gap-4 mt-4 text-lg">
+            <a href="#"><i class="fab fa-instagram hover:text-yellow-300"></i></a>
+            <a href="#"><i class="fab fa-facebook hover:text-yellow-300"></i></a>
+            <a href="#"><i class="fab fa-youtube hover:text-yellow-300"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const navLinks = document.querySelectorAll(".nav-link");
         const sections = document.querySelectorAll("section");
         const navbar = document.getElementById("navbar");
+        const navToggle = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const closeNav = document.getElementById("close-nav");
 
         function changeNavOnScroll() {
           let scrollPos = window.scrollY + 100;
@@ -193,6 +384,14 @@
             navbar.classList.remove("nav-scrolled");
           }
         }
+
+        navToggle.addEventListener("click", () => {
+          navMenu.classList.remove("hidden");
+        });
+
+        closeNav.addEventListener("click", () => {
+          navMenu.classList.add("hidden");
+        });
 
         window.addEventListener("scroll", changeNavOnScroll);
       });
